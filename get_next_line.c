@@ -6,7 +6,7 @@
 /*   By: pngamcha <pngamcha@student.42bangkok.co    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/24 15:40:27 by pngamcha          #+#    #+#             */
-/*   Updated: 2022/03/06 17:01:27 by pngamcha         ###   ########.fr       */
+/*   Updated: 2022/03/06 17:57:08 by pngamcha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,11 +38,10 @@ static char	*get_line(char *content, size_t *pos)
 	return (line);
 }
 
-static char	*get_read(int fd)
+static char	*get_read(int fd,char *content)
 {
 	int	read_size;
 	char	*buff;
-	char	*content;
 
 	read_size = 1;
 	buff = malloc(sizeof(char) * (BUFFER_SIZE + 1));
@@ -55,7 +54,9 @@ static char	*get_read(int fd)
 			return (gnl_free(buff));
 		buff[read_size] = '\0';
 		if (read_size > 0)
-			content = ft_strjoin_f(content, buff);
+			content = ft_strjoin_f(content, buff, read_size);
+		if (buff && ft_findchr(buff, '\n'))
+			break;
 	}
 	free(buff);
 	return (content);
@@ -67,8 +68,7 @@ char	*get_next_line(int fd)
 
 	if (fd < 0 || BUFFER_SIZE < 1)
 		return (0);
-	if (!result.content)
-		result.content = get_read(fd);
+	result.content = get_read(fd, result.content);
 	if (result.content)
 		return (get_line(result.content, &result.pos));
 	else
@@ -82,7 +82,7 @@ int     main(void)
     char    *ret;
 	int n = 0;
 
-    if ((fd = open("get_next_line_utils.c", O_RDONLY)) < 3 && fd != 0)
+    if ((fd = open("get_next_line.h", O_RDONLY)) < 3 && fd != 0)
         return (-1);
     while (n != 80)
     {

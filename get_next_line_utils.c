@@ -6,7 +6,7 @@
 /*   By: pngamcha <pngamcha@student.42bangkok.co    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/28 13:34:13 by pngamcha          #+#    #+#             */
-/*   Updated: 2022/03/06 16:06:29 by pngamcha         ###   ########.fr       */
+/*   Updated: 2022/03/06 17:54:59 by pngamcha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,27 +25,42 @@ static size_t	ft_strlen(char const *s)
 }
 
 //special strjoin with free(s1) for leaks preventation
-char	*ft_strjoin_f(char const *s1, char const *s2)
+char	*ft_strjoin_f(char const *s1, char const *s2, size_t s2_len)
 {
 	size_t	i;
 	size_t	j;
+	size_t	s1_len;
 	char	*result;
 
-	result = malloc(sizeof(char) * (ft_strlen(s1) + ft_strlen(s2) + 1));
+	s1_len = ft_strlen(s1);
+	result = malloc(sizeof(char) * (s1_len + s2_len + 1));
 	if (!result)
 		return (0);
 	i = 0;
-	while (i < ft_strlen(s1))
+	while (i < s1_len)
 	{
 		result[i] = s1[i];
 		i++;
 	}
 	j = 0;
-	while (j < ft_strlen(s2))
+	while (j < s2_len)
 		result[i++] = s2[j++];
 	result[i] = '\0';
 	free((char *)s1);
 	return (result);
 }
 
+int	ft_findchr(const char *s, int c)
+{
+	int	i;
+
+	i = 0;
+	while (s[i] != (char)c)
+	{
+		if (s[i] == '\0')
+			return (0);
+		i++;
+	}
+	return (i);
+}
 
