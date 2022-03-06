@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   get_next_line.c                                    :+:      :+:    :+:   */
+/*   get_next_line_bonus.c                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: pngamcha <pngamcha@student.42bangkok.co    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/02/24 15:40:27 by pngamcha          #+#    #+#             */
-/*   Updated: 2022/03/06 21:59:44 by pngamcha         ###   ########.fr       */
+/*   Created: 2022/03/06 21:46:43 by pngamcha          #+#    #+#             */
+/*   Updated: 2022/03/06 21:59:58 by pngamcha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,17 +72,17 @@ static	char	*get_read(int fd, char *content)
 
 char	*get_next_line(int fd)
 {
-	static t_read	result;
+	static t_read	result[50000];
 	char			*line;
 
-	if (fd < 0 || BUFFER_SIZE < 1)
+	if (fd < 0 || BUFFER_SIZE < 1 || fd > 50000)
 		return (0);
-	result.content = get_read(fd, result.content);
-	if (result.content)
+	result[fd].content = get_read(fd, result[fd].content);
+	if (result[fd].content)
 	{
-		line = get_line(result.content, &result.pos);
+		line = get_line(result[fd].content, &result[fd].pos);
 		if (!line)
-			free (result.content);
+			free (result[fd].content);
 		return (line);
 	}
 	else
