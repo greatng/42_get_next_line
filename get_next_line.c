@@ -6,24 +6,16 @@
 /*   By: pngamcha <pngamcha@student.42bangkok.co    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/24 15:40:27 by pngamcha          #+#    #+#             */
-/*   Updated: 2022/03/06 16:49:27 by pngamcha         ###   ########.fr       */
+/*   Updated: 2022/03/06 16:55:06 by pngamcha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "get_next_line.h"
 
-static char	*gnl_free(char *content, char *buff)
+static char	*gnl_free(char *buff)
 {
-	if (content)
-	{
-		printf("contect");
-		free(content);
-	}
 	if (buff)
-	{
-		printf("buff");
 		free(buff);
-	}
 	return (NULL);
 }
 
@@ -60,7 +52,7 @@ static char	*get_read(int fd)
 	{
 		read_size = read (fd, buff, BUFFER_SIZE);
 		if (read_size < 0) 
-			return (gnl_free(buff, content));
+			return (gnl_free(buff));
 		buff[read_size] = '\0';
 		if (read_size > 0)
 			content = ft_strjoin_f(content, buff);
@@ -83,6 +75,7 @@ char	*get_next_line(int fd)
 		return (0);
 }
 
+/*
 int     main(void)
 {
     int     fd;
@@ -101,3 +94,4 @@ int     main(void)
     close (fd);
     return (0);
 }
+*/
