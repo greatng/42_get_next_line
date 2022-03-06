@@ -6,7 +6,7 @@
 /*   By: pngamcha <pngamcha@student.42bangkok.co    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/24 15:40:27 by pngamcha          #+#    #+#             */
-/*   Updated: 2022/03/06 16:59:06 by pngamcha         ###   ########.fr       */
+/*   Updated: 2022/03/06 17:01:27 by pngamcha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,7 @@ static char	*get_line(char *content, size_t *pos)
 	line = malloc(sizeof(char) * (i - (*pos) + 2));
 	if (!line)
 		return (NULL);
-	while (*pos < i + 1)
+	while (*pos < i + 1 && content[*pos])
 		line[j++] = content[(*pos)++];
 	line[j] = '\0';
 	return (line);
