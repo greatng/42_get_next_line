@@ -6,7 +6,7 @@
 /*   By: pngamcha <pngamcha@student.42bangkok.co    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/24 15:40:27 by pngamcha          #+#    #+#             */
-/*   Updated: 2022/03/06 16:30:44 by pngamcha         ###   ########.fr       */
+/*   Updated: 2022/03/06 16:49:27 by pngamcha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,9 +15,15 @@
 static char	*gnl_free(char *content, char *buff)
 {
 	if (content)
+	{
+		printf("contect");
 		free(content);
+	}
 	if (buff)
+	{
+		printf("buff");
 		free(buff);
+	}
 	return (NULL);
 }
 
