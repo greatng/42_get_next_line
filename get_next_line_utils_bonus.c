@@ -6,11 +6,11 @@
 /*   By: pngamcha <pngamcha@student.42bangkok.co    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/06 21:46:36 by pngamcha          #+#    #+#             */
-/*   Updated: 2022/03/06 21:46:39 by pngamcha         ###   ########.fr       */
+/*   Updated: 2022/03/14 20:22:08 by pngamcha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "get_next_line.h"
+#include "get_next_line_bonus.h"
 
 static size_t	ft_strlen(char const *s)
 {

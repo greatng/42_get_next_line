@@ -6,11 +6,11 @@
 /*   By: pngamcha <pngamcha@student.42bangkok.co    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/06 21:46:43 by pngamcha          #+#    #+#             */
-/*   Updated: 2022/03/06 21:59:58 by pngamcha         ###   ########.fr       */
+/*   Updated: 2022/03/14 20:22:07 by pngamcha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "get_next_line.h"
+#include "get_next_line_bonus.h"
 
 static char	*gnl_free(char *buff)
 {
