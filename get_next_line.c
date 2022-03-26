@@ -6,7 +6,7 @@
 /*   By: pngamcha <pngamcha@student.42bangkok.co    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/24 15:40:27 by pngamcha          #+#    #+#             */
-/*   Updated: 2022/03/06 21:59:44 by pngamcha         ###   ########.fr       */
+/*   Updated: 2022/03/26 17:38:50 by pngamcha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,6 +48,7 @@ static	char	*get_read(int fd, char *content)
 {
 	int		read_size;
 	char	*buff;
+	char	*tmp;
 
 	buff = malloc(sizeof(char) * (BUFFER_SIZE + 1));
 	if (!buff)
@@ -60,7 +61,9 @@ static	char	*get_read(int fd, char *content)
 		if (read_size != 0)
 		{
 			buff[read_size] = '\0';
-			content = ft_strjoin_f(content, buff, read_size);
+			tmp = ft_strjoin(content, buff, read_size);
+			free(content);
+			content = tmp;
 		}
 		if ((read_size && ft_findchr(buff, '\n')))
 			break ;

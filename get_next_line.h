@@ -6,7 +6,7 @@
 /*   By: pngamcha <pngamcha@student.42bangkok.co    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/24 15:41:46 by pngamcha          #+#    #+#             */
-/*   Updated: 2022/03/06 21:55:17 by pngamcha         ###   ########.fr       */
+/*   Updated: 2022/03/26 17:40:39 by pngamcha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,7 @@ typedef struct s_read
 }	t_read;
 
 char	*get_next_line(int fd);
-char	*ft_strjoin_f(char const *s1, char const *s2, size_t s2_len);
+char	*ft_strjoin(char const *s1, char const *s2, size_t s2_len);
 int		ft_findchr(const char *s, int c);
 
 #endif

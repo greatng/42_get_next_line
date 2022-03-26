@@ -6,7 +6,7 @@
 /*   By: pngamcha <pngamcha@student.42bangkok.co    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/28 13:34:13 by pngamcha          #+#    #+#             */
-/*   Updated: 2022/03/06 19:08:22 by pngamcha         ###   ########.fr       */
+/*   Updated: 2022/03/26 17:38:24 by pngamcha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,8 +24,7 @@ static size_t	ft_strlen(char const *s)
 	return (n);
 }
 
-//special strjoin with free(s1) for leaks preventation
-char	*ft_strjoin_f(char const *s1, char const *s2, size_t s2_len)
+char	*ft_strjoin(char const *s1, char const *s2, size_t s2_len)
 {
 	size_t	i;
 	size_t	j;
@@ -46,7 +45,6 @@ char	*ft_strjoin_f(char const *s1, char const *s2, size_t s2_len)
 	while (j < s2_len)
 		result[i++] = s2[j++];
 	result[i] = '\0';
-	free((char *)s1);
 	return (result);
 }
 

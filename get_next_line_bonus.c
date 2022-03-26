@@ -6,7 +6,7 @@
 /*   By: pngamcha <pngamcha@student.42bangkok.co    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/06 21:46:43 by pngamcha          #+#    #+#             */
-/*   Updated: 2022/03/14 20:22:07 by pngamcha         ###   ########.fr       */
+/*   Updated: 2022/03/26 17:43:25 by pngamcha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,6 +48,7 @@ static	char	*get_read(int fd, char *content)
 {
 	int		read_size;
 	char	*buff;
+	char	*tmp;
 
 	buff = malloc(sizeof(char) * (BUFFER_SIZE + 1));
 	if (!buff)
@@ -60,7 +61,9 @@ static	char	*get_read(int fd, char *content)
 		if (read_size != 0)
 		{
 			buff[read_size] = '\0';
-			content = ft_strjoin_f(content, buff, read_size);
+			tmp = ft_strjoin(content, buff, read_size);
+			free(content);
+			content = tmp;
 		}
 		if ((read_size && ft_findchr(buff, '\n')))
 			break ;
@@ -70,6 +73,8 @@ static	char	*get_read(int fd, char *content)
 	return (content);
 }
 
+//There is another way to handle fd size
+//Please look at fd limit, still need some improvement
 char	*get_next_line(int fd)
 {
 	static t_read	result[50000];
