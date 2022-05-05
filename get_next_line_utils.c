@@ -6,13 +6,13 @@
 /*   By: pngamcha <pngamcha@student.42bangkok.co    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/28 13:34:13 by pngamcha          #+#    #+#             */
-/*   Updated: 2022/03/26 17:38:24 by pngamcha         ###   ########.fr       */
+/*   Updated: 2022/03/29 14:59:22 by pngamcha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "get_next_line.h"
 
-static size_t	ft_strlen(char const *s)
+size_t	ft_strlen(char const *s)
 {
 	size_t	n;
 
@@ -24,7 +24,7 @@ static size_t	ft_strlen(char const *s)
 	return (n);
 }
 
-char	*ft_strjoin(char const *s1, char const *s2, size_t s2_len)
+char	*ft_strnjoin(char const *s1, char const *s2, size_t s2_len)
 {
 	size_t	i;
 	size_t	j;

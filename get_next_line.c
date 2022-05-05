@@ -6,11 +6,13 @@
 /*   By: pngamcha <pngamcha@student.42bangkok.co    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/24 15:40:27 by pngamcha          #+#    #+#             */
-/*   Updated: 2022/03/26 17:38:50 by pngamcha         ###   ########.fr       */
+/*   Updated: 2022/05/05 10:25:22 by pngamcha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "get_next_line.h"
+#include <stdio.h>
+#include <fcntl.h>
 
 static char	*gnl_free(char *buff)
 {
@@ -61,7 +63,7 @@ static	char	*get_read(int fd, char *content)
 		if (read_size != 0)
 		{
 			buff[read_size] = '\0';
-			tmp = ft_strjoin(content, buff, read_size);
+			tmp = ft_strnjoin(content, buff, read_size);
 			free(content);
 			content = tmp;
 		}
@@ -85,30 +87,33 @@ char	*get_next_line(int fd)
 	{
 		line = get_line(result.content, &result.pos);
 		if (!line)
+		{
 			free (result.content);
+			result.content = NULL;
+		}
 		return (line);
 	}
 	else
 		return (0);
 }
 
-/*
-int     main(void)
-{
-    int     fd;
-    char    *ret;
-	int n = 0;
+// int     main(void)
+// {
+// 	int     fd;
+// 	char    *ret;
+// 	int n = 0;
 
-    if ((fd = open("./gnlTester/files/42_with_nl", O_RDONLY)) < 3 && fd != 0)
-        return (-1);
-    while (n != 40)
-    {
-	ret = get_next_line(fd);
-	printf("%s", ret);
-	free(ret);
-	n++;
-    }
-    close (fd);
-    return (0);
-}
-*/
+//    	if ((fd = open("get_next_line.c", O_RDONLY, 0755)) < 3 && fd != 0)
+//         	return (-1);
+// 	while (n != 200)
+// 	{
+// 		ret = get_next_line(fd);
+// 		write(STDOUT_FILENO, ret, ft_strlen(ret));
+// 		if (ret)
+// 			free(ret);
+// 		n++;
+// 	}
+// 	close (0);
+// 	close (fd);
+// 	return (0);
+// }

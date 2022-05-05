@@ -6,7 +6,7 @@
 /*   By: pngamcha <pngamcha@student.42bangkok.co    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/06 21:46:43 by pngamcha          #+#    #+#             */
-/*   Updated: 2022/03/26 17:43:25 by pngamcha         ###   ########.fr       */
+/*   Updated: 2022/05/05 10:24:41 by pngamcha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -87,7 +87,10 @@ char	*get_next_line(int fd)
 	{
 		line = get_line(result[fd].content, &result[fd].pos);
 		if (!line)
+		{
 			free (result[fd].content);
+			result[fd].content = NULL;
+		}
 		return (line);
 	}
 	else
